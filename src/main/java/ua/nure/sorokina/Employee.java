@@ -4,6 +4,7 @@ import ua.nure.sorokina.utils.TimeUtils;
 
 import java.math.BigDecimal;
 import java.math.MathContext;
+import java.util.Objects;
 
 public abstract class Employee {
     private final long id;
@@ -72,4 +73,19 @@ public abstract class Employee {
     }
 
     public abstract double getSalary(int month, int year);
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Employee employee = (Employee) o;
+        return id == employee.id &&
+                firstName.equals(employee.firstName) &&
+                lastName.equals(employee.lastName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, firstName, lastName);
+    }
 }
