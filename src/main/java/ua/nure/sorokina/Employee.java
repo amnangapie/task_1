@@ -2,8 +2,6 @@ package ua.nure.sorokina;
 
 import ua.nure.sorokina.utils.TimeUtils;
 
-import java.math.BigDecimal;
-import java.math.MathContext;
 import java.util.Objects;
 
 public abstract class Employee {
@@ -13,6 +11,7 @@ public abstract class Employee {
 
     /* monthly salary with 100-percent hours worked */
     private int rate;
+
     /* actual hours of work per month */
     private int actualHoursOfWork;
 
@@ -22,7 +21,8 @@ public abstract class Employee {
         this.lastName = lastName;
     }
 
-    public Employee(long id, String firstName, String lastName, int rate, int actualHoursOfWork) {
+    public Employee(long id, String firstName, String lastName,
+                    int rate, int actualHoursOfWork) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -87,5 +87,13 @@ public abstract class Employee {
     @Override
     public int hashCode() {
         return Objects.hash(id, firstName, lastName);
+    }
+
+    @Override
+    public String toString() {
+        return this.getClass().getSimpleName()
+                + "{id=" + id + ", firstName='" + firstName + '\''
+                + ", lastName='" + lastName + '\'' + ", rate=" + rate
+                + ", actualHoursOfWork=" + actualHoursOfWork + '}';
     }
 }
